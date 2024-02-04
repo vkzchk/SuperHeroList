@@ -23,7 +23,7 @@ class RecyclerViewAdapter(val items: MutableList<SuperHeroTransformResponse> = m
             title.text = items[position].name
             work.text = items[position].work
             Glide.with(itemView.context)
-                .load(items[position].image)
+                .load(items[position].imageUrl)
                 .into(image)
             itemView.setOnClickListener { onClick(items[position].name) }
         }

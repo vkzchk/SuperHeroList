@@ -2,13 +2,11 @@ package com.example.superherolist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,12 +32,12 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-fun transformResponse(res: SuperHeroResponse): MutableList<SuperHeroTransformResponse> {
+fun transformResponse(res: List<SuperHeroResponse>): MutableList<SuperHeroTransformResponse> {
     val items: MutableList<SuperHeroTransformResponse> = mutableListOf()
-    for (hero in res.heroes) {
-        val name = hero.name
-        val work = hero.work.occupation
-        val image = hero.images.sm
+    res.forEach {
+        val name = it.name
+        val work = it.work.occupation
+        val image = it.images.sm
         items.add(SuperHeroTransformResponse(name, work, image))
     }
 

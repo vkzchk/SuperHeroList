@@ -1,9 +1,6 @@
 package com.example.superherolist
 
-
-data class SuperHeroResponse(val heroes: List<SuperHero>)
-
-data class SuperHero(
+data class SuperHeroResponse(
     val id: Long,
     val name:String,
     val slug: String,
@@ -65,4 +62,4 @@ data class Images (
     val lg : String
 )
 
-data class SuperHeroTransformResponse( val name:String, val work: String, val image: String)
+data class SuperHeroTransformResponse( val name:String, val work: String, val imageUrl: String)
