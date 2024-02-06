@@ -62,4 +62,14 @@ data class Images (
     val lg : String
 )
 
-data class SuperHeroTransformResponse( val name:String, val work: String, val imageUrl: String)
+data class SuperHeroTransformResponse( val name:String, val work: String, val imageUrl: String, val details: Details)
+
+
+data class Details(
+    val fullName:String,
+    val gender: String,
+    val alterEgos: String,
+    val imageUrl:String,
+    val groupAffiliation:String,
+    val relatives:String
+)

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class RecyclerViewAdapter(val items: MutableList<SuperHeroTransformResponse> = mutableListOf(), val onClick:(String) ->Unit):RecyclerView.Adapter<RecyclerViewHolder>() {
+class RecyclerViewAdapter(val items: MutableList<SuperHeroTransformResponse> = mutableListOf(), val onClick:(String, details:Details) ->Unit):RecyclerView.Adapter<RecyclerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val listItem:View = LayoutInflater
             .from(parent.context)
@@ -25,8 +25,14 @@ class RecyclerViewAdapter(val items: MutableList<SuperHeroTransformResponse> = m
             Glide.with(itemView.context)
                 .load(items[position].imageUrl)
                 .into(image)
-            itemView.setOnClickListener { onClick(items[position].name) }
+            itemView.setOnClickListener { onClick(items[position].name, items[position].details) }
         }
+    }
+
+    fun setItems(items: List<SuperHeroTransformResponse>) {
+        this.items.clear()
+        this.items.addAll(items)
+        notifyDataSetChanged()
     }
 }
 
